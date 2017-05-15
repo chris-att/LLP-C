@@ -7,9 +7,11 @@
 
 queue* loadQueue(queue* myQueue)
 {
+	free(myQueue);
+	myQueue = createQueue(limit);
 	int ch;
 	FILE* fp;
-	fp = fopen("C:\\Users\\attac129\\OneDrive\\Documents\\MCAST\\MCAST BSCSD MQF LVL6\\BSCSD_YR1\\Low Level Programming\\Home Assignment\\Home_Assignment\\numbers.txt.txt", "r");
+	fp = fopen("/home/attac129/Documents/LLP_1/LLP-C/numbers", "r");
 	if (!fp) //fp is null report error
 	{
 		printf("Error opening file");
@@ -36,12 +38,11 @@ void addToQueue(queue* myQueue)
 {
 	int numToAdd;
 	printf("\nEnter a number to add to queue: ");
-	scanf_s("%d", &numToAdd);
+	scanf("%d", &numToAdd);
 	if (enque(myQueue, createNode(numToAdd)) == false)
 	{
 		printf("\n We were unable to add extra items to the queue.");
 	}
-	getchar();
 }
 
 void moreToServe(queue* myQueue)
@@ -50,43 +51,53 @@ void moreToServe(queue* myQueue)
 	getchar();
 }
 
-void exit()
+void clearBuffer()
 {
-	return 0;
+	int buffer = 0;
+	while ((buffer = getchar()) != '\n' && buffer != EOF)
+	{
+		
+	}
+}
+
+void exitProgram()
+{
+	exit(0);
 }
 
 void menu(queue* myQueue)
 {
 	int inputQ1 = 0;
 	printf("\tMain Menu\n1. Load Queue\n2. Next Please!\n3. Add to Queue\n4. Show Queue\n5. How many more to serve?\n6. Exit\n\n Enter your choice: ");
-	scanf_s("%d", &inputQ1);
+	scanf("%d", &inputQ1);
 	switch (inputQ1)
 	{
 	case 1: loadQueue(myQueue);
 		getchar();
-		system("cls"); 
+		system("clear");
 		menu(myQueue);
 	case 2: nextPlease(myQueue); 
 		getchar();
-		system("cls");
+		system("clear");
 		menu(myQueue);
 	case 3: addToQueue(myQueue);
 		getchar();
-		system("cls"); 
+		system("clear");
 		menu(myQueue);
 	case 4: showQueue(myQueue); 
 		getchar();
 		getchar();
-		system("cls"); 
+		system("clear");
 		menu(myQueue);
 	case 5: moreToServe(myQueue); 
 		getchar();
-		system("cls"); 
+		system("clear");
 		menu(myQueue);
-	case 6: break; exit();
+	case 6: break; exitProgram();
 	default: printf("\nIncorrect choice .. now exiting.\n");
 		getchar();
-		system("cls");
+		getchar();
+		system("clear");
 		menu(myQueue);
 	}
 }
