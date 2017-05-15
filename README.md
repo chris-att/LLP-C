@@ -12,12 +12,14 @@ Getting the latest version - git pull
 Configuring user - git config --global user.email christian.attard.a103058@mcast.edu.mt
 		   git config --global user.name "Christian Attard"
 
+Checking GIT status - git status
+
+Changing between branches - git checkout <branch name>
+
 Adding a file or directory - git add <file>
 			     git add <directory>
 
 Commiting changes - git comming -m "<message>"
 
-Pushing changes - git push
-
-Changing between branches - git checkout <branch name>
+Pushing changes - git push origin <commit name>
 
