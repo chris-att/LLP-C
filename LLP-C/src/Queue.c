@@ -63,40 +63,37 @@ void exitProgram()
 	exit(0);
 }
 
-void menu(queue* myQueue)
+void menu(int inputQ1, queue* myQueue)
 {
-	int inputQ1 = 0;
-	printf("\tMain Menu\n1. Load Queue\n2. Next Please!\n3. Add to Queue\n4. Show Queue\n5. How many more to serve?\n6. Exit\n\n Enter your choice: ");
-	scanf("%d", &inputQ1);
 	switch (inputQ1)
 	{
 	case 1: loadQueue(myQueue);
 		getchar();
 		system("clear");
-		menu(myQueue);
+		break;
 	case 2: nextPlease(myQueue);
 		getchar();
 		system("clear");
-		menu(myQueue);
+		break;
 	case 3: addToQueue(myQueue);
 		getchar();
 		system("clear");
-		menu(myQueue);
+		break;
 	case 4: showQueue(myQueue->Head);
 		getchar();
 		getchar();
 		system("clear");
-		menu(myQueue);
+		break;
 	case 5: moreToServe(myQueue);
 		getchar();
 		system("clear");
-		menu(myQueue);
+		break;
 	case 6: break; exitProgram();
 	default: printf("\nIncorrect choice .. now exiting.\n");
 		getchar();
 		getchar();
 		system("clear");
-		menu(myQueue);
+		break;
 	}
 }
 
@@ -104,6 +101,13 @@ int main(void)
 {
 	queue* myQueue = createQueue(limit);
 	myQueue = loadQueue(myQueue);
-	menu(myQueue);
+	int inputQ1 = 0;
+	do
+	{
+		printf("\tMain Menu\n1. Load Queue\n2. Next Please!\n3. Add to Queue\n4. Show Queue\n5. How many more to serve?\n6. Exit\n\n Enter your choice: ");
+		scanf("%d", &inputQ1);
+		menu(inputQ1, myQueue);
+	}
+	while(inputQ1 != 6);
 }
 
