@@ -1,8 +1,7 @@
-#pragma warning(disable:4996)
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "queue.h"
+#include "Queue.h"
 #define limit 600
 
 queue* loadQueue(queue* myQueue)
@@ -11,16 +10,15 @@ queue* loadQueue(queue* myQueue)
 	myQueue = createQueue(limit);
 	int ch;
 	FILE* fp;
-	fp = fopen("/home/attac129/Documents/LLP_1/LLP-C/numbers", "r");
+	fp = fopen("/home/attac129/Documents/workspace/numbers", "r");
 	if (!fp) //fp is null report error
 	{
 		printf("Error opening file");
 	}
 	else //file opened without errors
 	{
-		while ((ch = getc(fp)) != EOF) //get ch from file
+		while (fscanf(fp, "%d", &ch) == 1) //get ch from file
 		{
-			fscanf(fp, "%d", &ch);
 			enque(myQueue, createNode(ch)); // display ch on screen
 		}
 	}
@@ -56,7 +54,7 @@ void clearBuffer()
 	int buffer = 0;
 	while ((buffer = getchar()) != '\n' && buffer != EOF)
 	{
-		
+
 	}
 }
 
@@ -76,7 +74,7 @@ void menu(queue* myQueue)
 		getchar();
 		system("clear");
 		menu(myQueue);
-	case 2: nextPlease(myQueue); 
+	case 2: nextPlease(myQueue);
 		getchar();
 		system("clear");
 		menu(myQueue);
@@ -84,12 +82,12 @@ void menu(queue* myQueue)
 		getchar();
 		system("clear");
 		menu(myQueue);
-	case 4: showQueue(myQueue); 
+	case 4: showQueue(myQueue);
 		getchar();
 		getchar();
 		system("clear");
 		menu(myQueue);
-	case 5: moreToServe(myQueue); 
+	case 5: moreToServe(myQueue);
 		getchar();
 		system("clear");
 		menu(myQueue);
@@ -106,8 +104,6 @@ int main(void)
 {
 	queue* myQueue = createQueue(limit);
 	myQueue = loadQueue(myQueue);
-	nodePtr head = myQueue->Head; //points to the start of the queue
-	nodePtr tail = myQueue->Tail; //points to the end of the queue
 	menu(myQueue);
 }
 
