@@ -86,22 +86,13 @@ bool deque(queue* myQueue)
 	}
 }
 
-void showQueue(queue* myQueue)
+void showQueue(node* node)
 {
-	if (isEmpty(myQueue) == true)
+	printf("%d\n", node->item);
+	if(node->next != NULL)
 	{
-		printf("\nThere are no nodes in the list.");
+		showQueue(node->next);
 	}
-	else
-	{
-		int forLoop = myQueue->size;
-		printf("\nDisplaying queue ..");
-		for (int i = 0; i < forLoop; i++)
-		{
-			deque(myQueue);
-		}
-	}
-
 }
 
 int queueSize(queue* myQueue)

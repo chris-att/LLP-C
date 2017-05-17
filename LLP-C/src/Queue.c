@@ -10,7 +10,7 @@ queue* loadQueue(queue* myQueue)
 	myQueue = createQueue(limit);
 	int ch;
 	FILE* fp;
-	fp = fopen("/home/attac129/Documents/workspace/numbers", "r");
+	fp = fopen("/home/attac129/Documents/workspace/LLP-C/LLP-C/Other Files/numbers", "r");
 	if (!fp) //fp is null report error
 	{
 		printf("Error opening file");
@@ -82,7 +82,7 @@ void menu(queue* myQueue)
 		getchar();
 		system("clear");
 		menu(myQueue);
-	case 4: showQueue(myQueue);
+	case 4: showQueue(myQueue->Head);
 		getchar();
 		getchar();
 		system("clear");
