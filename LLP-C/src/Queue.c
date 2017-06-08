@@ -79,7 +79,7 @@ void menu(int inputQ1, queue* myQueue)
 		getchar();
 		system("clear");
 		break;
-	case 4: showQueue(myQueue->Head);
+	case 4: showQueue(myQueue);
 		getchar();
 		getchar();
 		system("clear");
@@ -88,7 +88,7 @@ void menu(int inputQ1, queue* myQueue)
 		getchar();
 		system("clear");
 		break;
-	case 6: break; exitProgram();
+	case 6: exitProgram(); break;
 	default: printf("\nIncorrect choice .. now exiting.\n");
 		getchar();
 		getchar();
@@ -97,7 +97,7 @@ void menu(int inputQ1, queue* myQueue)
 	}
 }
 
-int main(void)
+int main(int argc, char *argv[])
 {
 	queue* myQueue = createQueue(limit);
 	myQueue = loadQueue(myQueue);

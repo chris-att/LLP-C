@@ -70,7 +70,6 @@ bool isEmpty(queue* myQueue)
 
 bool deque(queue* myQueue)
 {
-	int itemToReturn = 0;
 	if (isEmpty(myQueue) == true)
 	{
 		printf("\nThere are no nodes in the list.");
@@ -78,21 +77,27 @@ bool deque(queue* myQueue)
 	}
 	else
 	{
-		itemToReturn = myQueue->Head->item;
+		printf("\nThe next node is: %d", myQueue->Head->item);
+		free(myQueue->Head);		
 		myQueue->Head = myQueue->Head->next;
 		myQueue->size--;
-		printf("\nThe next node is: %d", itemToReturn);
+		
 		return true;
 	}
 }
 
-void showQueue(node* node)
+void showQueue(queue* myQueue)
 {
-	printf("%d\n", node->item);
-	if(node->next != NULL)
+	if(myQueue->size == 0)
 	{
-		showQueue(node->next);
+		printf("\nQueue is empty, nothing to display");
 	}
+	node *crawler = myQueue->Head;
+	for(int i = 0; i < myQueue->size; i++)
+	{
+		printf("%d\n", crawler->item);
+		crawler = crawler->next;
+	}	
 }
 
 int queueSize(queue* myQueue)
