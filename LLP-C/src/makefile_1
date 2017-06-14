@@ -1,0 +1,15 @@
+default: debug release
+
+debug:
+	-mkdir debug
+	gcc -Wall -g -o0 -o debug/myQueue Queue.c
+
+release: 
+	-mkdir release
+	gcc -Wall -o release/myQueue Queue.c
+
+clean:
+	-rm debug/*
+	-rm release/*
+
+rebuild: clean debug release
